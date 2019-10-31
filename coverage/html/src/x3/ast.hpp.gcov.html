@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - src/x3/ast.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">src/x3</a> - ast.hpp<span style="font-size: 80%;"> (source / <a href="ast.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-10-31 20:40:33</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryMed">86.7 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef MATHEVAL_IMPLEMENTATION</a>
+<span class="lineNum">       2 </span>            : #error &quot;Do not include ast.hpp directly!&quot;
+<span class="lineNum">       3 </span>            : #endif
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #pragma once
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : #include &lt;boost/spirit/home/x3.hpp&gt;
+<span class="lineNum">       8 </span>            : #include &lt;boost/spirit/home/x3/support/ast/variant.hpp&gt;
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : #include &lt;list&gt;
+<span class="lineNum">      11 </span>            : #include &lt;string&gt;
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : namespace matheval {
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : namespace x3 = boost::spirit::x3;
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : namespace ast {
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : struct nil {};
+<span class="lineNum">      20 </span>            : struct unary_op;
+<span class="lineNum">      21 </span>            : struct binary_op;
+<span class="lineNum">      22 </span>            : struct expression;
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<span class="lineNum">      24 </span>            : // clang-format off
+<span class="lineNum">      25 </span><span class="lineCov">      19131 : struct operand : x3::variant&lt;</span>
+<span class="lineNum">      26 </span>            :                  nil
+<span class="lineNum">      27 </span>            :                  , double
+<span class="lineNum">      28 </span>            :                  , std::string
+<span class="lineNum">      29 </span>            :                  , x3::forward_ast&lt;unary_op&gt;
+<span class="lineNum">      30 </span>            :                  , x3::forward_ast&lt;binary_op&gt;
+<a name="31"><span class="lineNum">      31 </span>            :                  , x3::forward_ast&lt;expression&gt;</a>
+<span class="lineNum">      32 </span>            :                  &gt; {
+<span class="lineNum">      33 </span><span class="lineCov">          3 :     using base_type::base_type;</span>
+<span class="lineNum">      34 </span>            :     using base_type::operator=;
+<span class="lineNum">      35 </span>            : };
+<a name="36"><span class="lineNum">      36 </span>            : // clang-format on</a>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineCov">        554 : struct unary_op {</span>
+<span class="lineNum">      39 </span>            :     double (*op)(double);
+<span class="lineNum">      40 </span>            :     operand rhs;
+<a name="41"><span class="lineNum">      41 </span>            : };</a>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">        277 : struct binary_op {</span>
+<span class="lineNum">      44 </span>            :     double (*op)(double, double);
+<span class="lineNum">      45 </span>            :     operand lhs;
+<span class="lineNum">      46 </span>            :     operand rhs;
+<a name="47"><span class="lineNum">      47 </span>            : };</a>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">       6128 : struct operation {</span>
+<span class="lineNum">      50 </span>            :     double (*op)(double, double);
+<span class="lineNum">      51 </span>            :     operand rhs;
+<a name="52"><span class="lineNum">      52 </span>            : };</a>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">       8330 : struct expression {</span>
+<span class="lineNum">      55 </span>            :     operand lhs;
+<span class="lineNum">      56 </span>            :     std::list&lt;operation&gt; rhs;
+<span class="lineNum">      57 </span>            : };
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : } // namespace ast
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : } // namespace matheval
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
