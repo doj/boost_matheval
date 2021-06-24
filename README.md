@@ -1,18 +1,12 @@
-this repository was forked from https://github.com/hmenke/boost_matheval
-
 # Boost Matheval
-
-[![Build status][travis-svg]][travis-link]
-[![AppVeyor build status][appveyor-svg]][appveyor-link]
-[![Code coverage report][codecov-svg]][codecov-link]
-[Documentation][doxygen-link]
-[Coverage][coverage-link]
 
 This library uses [Boost.Spirit](http://www.boost.org/libs/spirit/index.html)
 (QI for C++11 and X3 for C++14) and
 [Boost.Fusion](http://www.boost.org/libs/fusion/index.html) (and
 [Boost.Phoenix](http://www.boost.org/libs/phoenix/index.html) with C++11) to
 parse and evaluate mathematical expressions.
+
+## Examples
 
 The examples below use the X3 variant of Boost Matheval.
 
@@ -71,7 +65,7 @@ Outputs
 2 3
 ```
 
-### Build instructions
+## Build instructions
 
 To build Boost Matheval, just follow the usual CMake workflow.
 ```bash
@@ -82,7 +76,7 @@ make         # build the library and the examples
 make check   # build and run the tests
 ```
 
-### Requirements and Limitations
+## Requirements and Limitations
 
 General:
 
@@ -91,7 +85,19 @@ General:
 * No support for ternary functions (e.g. `if`).
 * No support for complex numbers.
 
-### Alternatives
+## doj fork
+
+this repository was forked from https://github.com/hmenke/boost_matheval
+
+Changes from the upstream version:
+* use C++11 for the QI parser
+* QI and X3 parser support the same mathematical functions.
+* use C++ exceptions to abort processing if a mathematical function
+  uses an invalid parameter. All exceptions thrown by the matheval
+  library are derived from matheval::exception . See the matheval.hpp
+  header file for details.
+
+## Alternatives
 
 * [GNU libmatheval](https://www.gnu.org/software/libmatheval/) is a C
   library built using the parser generator YACC with about the same
@@ -102,15 +108,6 @@ General:
   operations, control structures, and even file IO.  Compilation time
   is even longer than with Boost Matheval.
 
-### License
+## License
 
 Distributed under the [Boost Software License, Version 1.0](http://boost.org/LICENSE_1_0.txt).
-
-[travis-svg]: https://travis-ci.org/hmenke/boost_matheval.svg?branch=master
-[travis-link]: https://travis-ci.org/hmenke/boost_matheval
-[appveyor-svg]: https://ci.appveyor.com/api/projects/status/bphe1739kownt81c/branch/master?svg=true
-[appveyor-link]: https://ci.appveyor.com/project/hmenke/boost-matheval/branch/master
-[codecov-svg]: https://codecov.io/gh/hmenke/boost_matheval/branch/master/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/hmenke/boost_matheval
-[doxygen-link]: https://hmenke.github.io/boost_matheval/doxygen/html/
-[coverage-link]: https://hmenke.github.io/boost_matheval/coverage/html/
