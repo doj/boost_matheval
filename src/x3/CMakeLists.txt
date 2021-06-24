@@ -10,7 +10,7 @@ add_library(matheval.x3
   parser.hpp
   )
 target_include_directories(matheval.x3
-  PUBLIC ../../include/matheval/x3
+  PUBLIC ../../include/matheval
   )
 target_compile_features(matheval.x3
   PUBLIC cxx_std_14

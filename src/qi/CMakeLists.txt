@@ -10,7 +10,7 @@ add_library(matheval.qi
   parser.hpp
   )
 target_include_directories(matheval.qi
-  PUBLIC ../../include/matheval/qi
+  PUBLIC ../../include/matheval
   )
 target_compile_features(matheval.qi
   PUBLIC cxx_std_11

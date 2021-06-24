@@ -24,3 +24,5 @@ if(READLINE_FOUND)
   EXAMPLE(TARGET calc SOURCE calc.cpp)
   target_link_libraries(matheval.ex.calc PRIVATE ${READLINE_LIBRARY})
 endif()
+
+find_package(Boost 1.65.1 REQUIRED)
