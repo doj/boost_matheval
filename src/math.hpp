@@ -46,7 +46,7 @@ T rad(T x) {
 template <typename T>
 T acos(T x) {
   if (std::fabs(x) > 1) {
-    throw matheval::invalidAcos{x};
+    throw matheval::acosInvalid{x};
   }
   return std::acos(x);
 }
@@ -55,7 +55,7 @@ T acos(T x) {
 template <typename T>
 T acosh(T x) {
   if (x < 1.0) {
-    throw matheval::invalidAcosh{x};
+    throw matheval::acoshInvalid{x};
   }
   return std::acosh(x);
 }
@@ -64,7 +64,7 @@ T acosh(T x) {
 template <typename T>
 T asin(T x) {
   if (std::fabs(x) > 1) {
-    throw matheval::invalidAsin{x};
+    throw matheval::asinInvalid{x};
   }
   return std::asin(x);
 }
@@ -74,7 +74,7 @@ template <typename T>
 T atanh(T x) {
   const T abs_x = std::fabs(x);
   if (abs_x > 1) {
-    throw matheval::invalidAtanh{x};
+    throw matheval::atanhInvalid{x};
   } else if (abs_x == 1.0) {
     throw matheval::atanhDivideByZero{};
   }

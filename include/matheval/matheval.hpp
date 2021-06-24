@@ -111,28 +111,28 @@ public:
   powUnderflow() : exception("pow underflow") {}
 };
 
-class invalidAcos : public exception
+class acosInvalid : public exception
 {
 public:
-  explicit invalidAcos(double d) : exception("invalid acos "+std::to_string(d)) {}
+  explicit acosInvalid(double d) : exception("invalid acos "+std::to_string(d)) {}
 };
 
-class invalidAcosh : public exception
+class acoshInvalid : public exception
 {
 public:
-  explicit invalidAcosh(double d) : exception("invalid acosh "+std::to_string(d)) {}
+  explicit acoshInvalid(double d) : exception("invalid acosh "+std::to_string(d)) {}
 };
 
-class invalidAsin : public exception
+class asinInvalid : public exception
 {
 public:
-  explicit invalidAsin(double d) : exception("invalid asin "+std::to_string(d)) {}
+  explicit asinInvalid(double d) : exception("invalid asin "+std::to_string(d)) {}
 };
 
-class invalidAtanh : public exception
+class atanhInvalid : public exception
 {
 public:
-  explicit invalidAtanh(double d) : exception("invalid atanh "+std::to_string(d)) {}
+  explicit atanhInvalid(double d) : exception("invalid atanh "+std::to_string(d)) {}
 };
 
 class atanhDivideByZero : public divideByZero
