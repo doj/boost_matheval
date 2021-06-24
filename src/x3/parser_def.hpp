@@ -120,7 +120,7 @@ struct multiplicative_op_ : x3::symbols<double (*)(double, double)> {
         add
             ("*", static_cast<double (*)(double, double)>(&math::multiplies))
             ("/", static_cast<double (*)(double, double)>(&math::divides))
-            ("%", static_cast<double (*)(double, double)>(&std::fmod))
+            ("%", static_cast<double (*)(double, double)>(&math::fmod))
             ;
         // clang-format on
     }

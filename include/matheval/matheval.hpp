@@ -74,4 +74,16 @@ public:
   divideByZero() : exception("divide by zero") {}
 };
 
+class moduloByZero : public exception
+{
+public:
+  moduloByZero() : exception("modulo by zero") {}
+};
+
+class moduloWithInfinity : public exception
+{
+public:
+  moduloWithInfinity() : exception("modulo with infinity") {}
+};
+
 } // namespace matheval

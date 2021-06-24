@@ -81,6 +81,18 @@ T divides(T x, T y) {
     return x / y;
 }
 
+/// @brief modulo
+template <typename T>
+T fmod(T x, T y) {
+  if (y == 0) {
+    throw matheval::moduloByZero{};
+  }
+  if (isinf(x)) {
+    throw matheval::moduloWithInfinity{};
+  }
+  return std::fmod(x,y);
+}
+
 /// @brief unary not
 template <typename T>
 T unary_not(T x) {

@@ -89,7 +89,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
     multiplicative_op.add
         ("*", static_cast<double (*)(double, double)>(&math::multiplies))
         ("/", static_cast<double (*)(double, double)>(&math::divides))
-        ("%", static_cast<double (*)(double, double)>(&std::fmod))
+        ("%", static_cast<double (*)(double, double)>(&math::fmod))
         ;
 
     logical_op.add
