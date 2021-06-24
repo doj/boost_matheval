@@ -9,9 +9,9 @@ this repository was forked from https://github.com/hmenke/boost_matheval
 [Coverage][coverage-link]
 
 This library uses [Boost.Spirit](http://www.boost.org/libs/spirit/index.html)
-(QI for C++98 and X3 for C++14) and
+(QI for C++11 and X3 for C++14) and
 [Boost.Fusion](http://www.boost.org/libs/fusion/index.html) (and
-[Boost.Phoenix](http://www.boost.org/libs/phoenix/index.html) with C++98) to
+[Boost.Phoenix](http://www.boost.org/libs/phoenix/index.html) with C++11) to
 parse and evaluate mathematical expressions.
 
 The examples below use the X3 variant of Boost Matheval.

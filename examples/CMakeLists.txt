@@ -26,3 +26,6 @@ if(READLINE_FOUND)
 endif()
 
 find_package(Boost 1.65.1 REQUIRED)
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+endif()
