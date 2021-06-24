@@ -171,4 +171,10 @@ public:
   explicit sqrtInvalid(double d) : exception("invalid sqrt "+std::to_string(d)) {}
 };
 
+class tanInvalid : public exception
+{
+public:
+  tanInvalid() : exception("invalid tan") {}
+};
+
 } // namespace matheval

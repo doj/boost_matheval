@@ -61,6 +61,9 @@ EXPRTEST(func_sqrt  , "sqrt  ( 1.0)", std::sqrt  ( 1.0))
 THROWTEST(sqrt1, "sqrt(-3.14)", matheval::sqrtInvalid)
 
 EXPRTEST(func_tan   , "tan   ( 1.0)", std::tan   ( 1.0))
+THROWTEST(tan1, "tan(+inf)", matheval::tanInvalid)
+THROWTEST(tan2, "tan(-inf)", matheval::tanInvalid)
+
 EXPRTEST(func_tanh  , "tanh  ( 1.0)", std::tanh  ( 1.0))
 
 EXPRTEST(func_atan2, "atan2(2.0, 3.0)", std::atan2(2.0,3.0))

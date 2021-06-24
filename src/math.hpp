@@ -147,6 +147,15 @@ T sqrt(T x) {
   return std::sqrt(x);
 }
 
+/// @brief tangens
+template <typename T>
+T tan(T x) {
+  if (isinf(x)) {
+    throw matheval::tanInvalid{};
+  }
+  return std::tan(x);
+}
+
 /// @brief binary plus
 template <typename T>
 T plus(T x, T y) {

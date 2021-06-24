@@ -70,7 +70,7 @@ struct ufunc_ : x3::symbols<double (*)(double)> {
             ("sin"   , static_cast<double (*)(double)>(&math::sin))
             ("sinh"  , static_cast<double (*)(double)>(&std::sinh))
             ("sqrt"  , static_cast<double (*)(double)>(&math::sqrt))
-            ("tan"   , static_cast<double (*)(double)>(&std::tan))
+            ("tan"   , static_cast<double (*)(double)>(&math::tan))
             ("tanh"  , static_cast<double (*)(double)>(&std::tanh))
             ("tgamma", static_cast<double (*)(double)>(&std::tgamma))
             ;
