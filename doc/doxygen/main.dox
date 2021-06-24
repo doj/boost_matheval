@@ -41,10 +41,10 @@ Commonly known arithmetic operations are supported:
 
 - Addition `x + y`
 - Subtraction `x - y`
-- Multiplication `x*y`
-- Division `x/y`
-- Modulus `x%%y` (`fmod` for floating point types)
-- Power `x**y`
+- Multiplication `x * y`
+- Division `x / y`
+- Modulus `x % y` (`fmod` for floating point types)
+- Power `x ** y`
 
 @section unary_op Supported unary functions
 
@@ -54,35 +54,35 @@ On top of that, Boost Matheval defines the mathematical sign function
 
 - `abs`
 - `acos`
-- `acosh` (X3 only)
+- `acosh`
 - `asin`
-- `asinh` (X3 only)
+- `asinh`
 - `atan`
-- `atanh` (X3 only)
-- `cbrt` (X3 only)
+- `atanh`
+- `cbrt`
 - `ceil`
 - `cos`
 - `cosh`
 - `deg`
-- `erf` (X3 only)
-- `erfc` (X3 only)
+- `erf`
+- `erfc`
 - `exp`
-- `exp2` (X3 only)
+- `exp2`
 - `floor`
 - `isinf`
 - `isnan`
 - `log`
-- `log2` (X3 only)
+- `log2`
 - `log10`
 - `rad`
-- `round` (X3 only)
+- `round`
 - `sgn`
 - `sin`
 - `sinh`
 - `sqrt`
 - `tan`
 - `tanh`
-- `tgamma` (X3 only)
+- `tgamma`
 
 @section binary_op Supported binary functions
 
@@ -90,8 +90,8 @@ Binary functions are rather uncommon in mathematics.  Nevertheless
 there exist some:
 
 - `atan2`
-- `max` (X3 only)
-- `min` (X3 only)
+- `max`
+- `min`
 - `pow`
 
 @section constants Known constants

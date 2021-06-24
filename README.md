@@ -76,6 +76,15 @@ make         # build the library and the examples
 make check   # build and run the tests
 ```
 
+## Documentation
+
+```bash
+cd build
+cmake ..
+make doxygen
+open doc/doxygen/html/index.html
+```
+
 ## Requirements and Limitations
 
 General:
