@@ -75,10 +75,10 @@ public:
   explicit divideByZero(const char *what) : exception(what) {}
 };
 
-class moduloByZero : public exception
+class moduloByZero : public divideByZero
 {
 public:
-  moduloByZero() : exception("modulo by zero") {}
+  moduloByZero() : divideByZero("modulo by zero") {}
 };
 
 class moduloWithInfinity : public exception
