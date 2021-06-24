@@ -69,6 +69,18 @@ T asin(T x) {
   return std::asin(x);
 }
 
+/// @brief inverse hyperbolic tangent
+template <typename T>
+T atanh(T x) {
+  const T abs_x = std::fabs(x);
+  if (abs_x > 1) {
+    throw matheval::invalidAtanh{x};
+  } else if (abs_x == 1.0) {
+    throw matheval::atanhDivideByZero{};
+  }
+  return std::atanh(x);
+}
+
 /// @brief unary plus
 template <typename T>
 T plus(T x) {

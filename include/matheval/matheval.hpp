@@ -129,4 +129,16 @@ public:
   explicit invalidAsin(double d) : exception("invalid asin "+std::to_string(d)) {}
 };
 
+class invalidAtanh : public exception
+{
+public:
+  explicit invalidAtanh(double d) : exception("invalid atanh "+std::to_string(d)) {}
+};
+
+class atanhDivideByZero : public divideByZero
+{
+public:
+  atanhDivideByZero() : divideByZero("atanh divide by zero") {}
+};
+
 } // namespace matheval

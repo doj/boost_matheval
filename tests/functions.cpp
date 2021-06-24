@@ -18,6 +18,13 @@ THROWTEST(asin1, "asin(1.1)", matheval::invalidAsin)
 THROWTEST(asin2, "asin(-1.1)", matheval::invalidAsin)
 
 EXPRTEST(func_atan  , "atan  ( 1.0)", std::atan  ( 1.0))
+
+EXPRTEST(func_atanh , "atanh ( 0.0)", std::atanh ( 0.0))
+THROWTEST(atanh1, "atanh(+1.0)", matheval::atanhDivideByZero)
+THROWTEST(atanh2, "atanh(-1.0)", matheval::divideByZero)
+THROWTEST(atanh3, "atanh(+1.1)", matheval::invalidAtanh)
+THROWTEST(atanh4, "atanh(-1.1)", matheval::invalidAtanh)
+
 EXPRTEST(func_ceil  , "ceil  ( 0.5)", std::ceil  ( 0.5))
 EXPRTEST(func_cos   , "cos   ( 1.0)", std::cos   ( 1.0))
 EXPRTEST(func_cosh  , "cosh  ( 1.0)", std::cosh  ( 1.0))
@@ -54,7 +61,6 @@ THROWTEST(pow5, "pow(0, 0)", matheval::exception)
 
 #if __cplusplus >= 201402L
 EXPRTEST(func_asinh , "asinh ( 1.0)", std::asinh ( 1.0))
-EXPRTEST(func_atanh , "atanh ( 0.0)", std::atanh ( 0.0))
 EXPRTEST(func_cbrt  , "cbrt  ( 1.0)", std::cbrt  ( 1.0))
 EXPRTEST(func_erf   , "erf   ( 1.0)", std::erf   ( 1.0))
 EXPRTEST(func_erfc  , "erfc  ( 1.0)", std::erfc  ( 1.0))
