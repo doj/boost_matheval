@@ -141,4 +141,10 @@ public:
   atanhDivideByZero() : divideByZero("atanh divide by zero") {}
 };
 
+class cosInvalid : public exception
+{
+public:
+  explicit cosInvalid() : exception("invalid cos") {}
+};
+
 } // namespace matheval

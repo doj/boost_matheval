@@ -55,7 +55,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
         ("atan" , static_cast<double (*)(double)>(&std::atan))
         ("atanh", static_cast<double (*)(double)>(&math::atanh))
         ("ceil" , static_cast<double (*)(double)>(&std::ceil))
-        ("cos"  , static_cast<double (*)(double)>(&std::cos))
+        ("cos"  , static_cast<double (*)(double)>(&math::cos))
         ("cosh" , static_cast<double (*)(double)>(&std::cosh))
         ("deg"  , static_cast<double (*)(double)>(&math::deg))
         ("exp"  , static_cast<double (*)(double)>(&std::exp))

@@ -26,7 +26,11 @@ THROWTEST(atanh3, "atanh(+1.1)", matheval::atanhInvalid)
 THROWTEST(atanh4, "atanh(-1.1)", matheval::atanhInvalid)
 
 EXPRTEST(func_ceil  , "ceil  ( 0.5)", std::ceil  ( 0.5))
+
 EXPRTEST(func_cos   , "cos   ( 1.0)", std::cos   ( 1.0))
+THROWTEST(cos1, "cos(inf)", matheval::cosInvalid)
+THROWTEST(cos2, "cos(-inf)", matheval::cosInvalid)
+
 EXPRTEST(func_cosh  , "cosh  ( 1.0)", std::cosh  ( 1.0))
 EXPRTEST(func_deg   , "deg   (  pi)",              180 )
 EXPRTEST(func_exp   , "exp   ( 1.0)", std::exp   ( 1.0))

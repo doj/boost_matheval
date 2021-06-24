@@ -51,6 +51,15 @@ T acos(T x) {
   return std::acos(x);
 }
 
+/// @brief cosinus
+template <typename T>
+T cos(T x) {
+  if (std::isinf(x)) {
+    throw matheval::cosInvalid{};
+  }
+  return std::cos(x);
+}
+
 /// @brief inverse hyperbolic cosine
 template <typename T>
 T acosh(T x) {
