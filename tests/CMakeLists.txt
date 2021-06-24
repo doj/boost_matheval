@@ -14,7 +14,7 @@ function(UNIT_TEST)
   target_link_libraries(matheval.qi.${UT_TARGET} PRIVATE matheval::qi)
   set_target_properties(matheval.qi.${UT_TARGET} PROPERTIES
       CXX_CLANG_TIDY ""
-      CXX_STANDARD 98)
+      CXX_STANDARD 11)
   if(MSVC)
     set_property(SOURCE ${UT_SOURCE} PROPERTY COMPILE_FLAGS "/DNOMINMAX")
   endif()
