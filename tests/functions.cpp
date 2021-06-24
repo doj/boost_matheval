@@ -50,7 +50,11 @@ THROWTEST(log6, "log(+0.0)", matheval::logDivideByZero);
 
 EXPRTEST(func_rad   , "rad   ( 180)",      pi<double>())
 EXPRTEST(func_sgn   , "sgn   (-1.0)",             -1.0 )
+
 EXPRTEST(func_sin   , "sin   ( 1.0)", std::sin   ( 1.0))
+THROWTEST(sin1, "sin(inf)", matheval::sinInvalid)
+THROWTEST(sin2, "sin(-inf)", matheval::sinInvalid)
+
 EXPRTEST(func_sinh  , "sinh  ( 1.0)", std::sinh  ( 1.0))
 EXPRTEST(func_sqrt  , "sqrt  ( 1.0)", std::sqrt  ( 1.0))
 EXPRTEST(func_tan   , "tan   ( 1.0)", std::tan   ( 1.0))

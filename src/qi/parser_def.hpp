@@ -72,7 +72,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
             ("rad"   , static_cast<double (*)(double)>(&math::rad))
             ("round" , static_cast<double (*)(double)>(&std::round))
             ("sgn"   , static_cast<double (*)(double)>(&math::sgn))
-            ("sin"   , static_cast<double (*)(double)>(&std::sin))
+            ("sin"   , static_cast<double (*)(double)>(&math::sin))
             ("sinh"  , static_cast<double (*)(double)>(&std::sinh))
             ("sqrt"  , static_cast<double (*)(double)>(&std::sqrt))
             ("tan"   , static_cast<double (*)(double)>(&std::tan))

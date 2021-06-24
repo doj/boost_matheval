@@ -129,6 +129,15 @@ T log10(T x) {
   return std::log10(x);
 }
 
+/// @brief sinus
+template <typename T>
+T sin(T x) {
+  if (isinf(x)) {
+    throw matheval::sinInvalid{};
+  }
+  return std::sin(x);
+}
+
 /// @brief binary plus
 template <typename T>
 T plus(T x, T y) {

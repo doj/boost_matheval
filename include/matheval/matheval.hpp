@@ -159,4 +159,10 @@ public:
   logDivideByZero() : divideByZero("logarithm divide by zero") {}
 };
 
+class sinInvalid : public exception
+{
+public:
+  sinInvalid() : exception("invalid sin") {}
+};
+
 } // namespace matheval
