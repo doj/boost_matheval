@@ -5,8 +5,8 @@
 #pragma once
 
 #include <boost/math/constants/constants.hpp>
-
 #include <cmath>
+#include "matheval.hpp"
 
 namespace matheval {
 
@@ -75,6 +75,9 @@ T multiplies(T x, T y) {
 /// @brief divide
 template <typename T>
 T divides(T x, T y) {
+  if (y == 0) {
+    throw matheval::divideByZero{};
+  }
     return x / y;
 }
 

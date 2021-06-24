@@ -6,7 +6,7 @@
 
 #include "ast.hpp"
 #include "ast_adapted.hpp"
-#include "math.hpp"
+#include "../math.hpp"
 #include "parser.hpp"
 
 #include <boost/spirit/include/phoenix.hpp>

@@ -4,7 +4,7 @@ add_library(matheval.qi
   evaluator.cpp
   evaluator.hpp
   matheval.cpp
-  math.hpp
+  ../math.hpp
   parser.cpp
   parser_def.hpp
   parser.hpp

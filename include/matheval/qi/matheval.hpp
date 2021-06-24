@@ -3,6 +3,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <stdexcept>
 
 namespace matheval {
 
@@ -62,5 +63,18 @@ inline double parse(
     parser.parse(expr);
     return parser.evaluate(st);
 }
+
+class exception : public std::runtime_error
+{
+public:
+  explicit exception(const std::string& what_arg) : std::runtime_error(what_arg) {}
+  explicit exception(const char* what_arg) : std::runtime_error(what_arg) {}
+};
+
+class divideByZero : public exception
+{
+public:
+  divideByZero() : exception("divide by zero") {}
+};
 
 } // namespace matheval
