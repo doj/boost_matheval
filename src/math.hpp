@@ -42,6 +42,15 @@ T rad(T x) {
     return x * boost::math::constants::degree<T>();
 }
 
+/// @brief acosinus
+template <typename T>
+T acos(T x) {
+  if (std::fabs(x) > 1) {
+    throw matheval::invalidAcos{x};
+  }
+  return std::acos(x);
+}
+
 /// @brief unary plus
 template <typename T>
 T plus(T x) {

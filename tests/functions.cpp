@@ -4,8 +4,12 @@
 
 using boost::math::constants::pi;
 
-EXPRTEST(func_abs   , "abs   (-1.0)", std::abs   (-1.0))
+EXPRTEST(func_abs   , "abs   (-1.1)", std::fabs  (-1.1))
+
 EXPRTEST(func_acos  , "acos  ( 1.0)", std::acos  ( 1.0))
+THROWTEST(acos1, "acos(1.1)", matheval::invalidAcos)
+THROWTEST(acos2, "acos(-1.1)", matheval::invalidAcos)
+
 EXPRTEST(func_asin  , "asin  ( 1.0)", std::asin  ( 1.0))
 EXPRTEST(func_atan  , "atan  ( 1.0)", std::atan  ( 1.0))
 EXPRTEST(func_ceil  , "ceil  ( 0.5)", std::ceil  ( 0.5))

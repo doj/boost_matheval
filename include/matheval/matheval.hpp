@@ -111,4 +111,10 @@ public:
   powUnderflow() : exception("pow underflow") {}
 };
 
+class invalidAcos : public exception
+{
+public:
+  explicit invalidAcos(double d) : exception("invalid acos "+std::to_string(d)) {}
+};
+
 } // namespace matheval

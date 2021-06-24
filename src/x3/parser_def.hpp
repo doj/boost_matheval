@@ -43,7 +43,7 @@ struct ufunc_ : x3::symbols<double (*)(double)> {
         // clang-format off
         add
             ("abs"   , static_cast<double (*)(double)>(&std::abs))
-            ("acos"  , static_cast<double (*)(double)>(&std::acos))
+            ("acos"  , static_cast<double (*)(double)>(&math::acos))
             ("acosh" , static_cast<double (*)(double)>(&std::acosh))
             ("asin"  , static_cast<double (*)(double)>(&std::asin))
             ("asinh" , static_cast<double (*)(double)>(&std::asinh))
