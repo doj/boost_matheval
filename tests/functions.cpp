@@ -88,7 +88,12 @@ EXPRTEST(func_erf   , "erf   ( 1.0)", std::erf   ( 1.0))
 EXPRTEST(func_erfc  , "erfc  ( 1.0)", std::erfc  ( 1.0))
 EXPRTEST(func_exp2  , "exp2  ( 1.0)", std::exp2  ( 1.0))
 EXPRTEST(func_round , "round ( 0.5)", std::round ( 0.5))
+
 EXPRTEST(func_tgamma, "tgamma( 4.0)", std::tgamma( 4.0))
+EXPRTEST(func_tgamma2, "tgamma(-3.14)", std::tgamma(-3.14))
+THROWTEST(tgamma1, "tgamma(0)", matheval::tgammaDivideByZero)
+THROWTEST(tgamma2, "tgamma(-inf)", matheval::tgammaInvalid)
+THROWTEST(tgamma3, "tgamma(-2)", matheval::tgammaInvalid)
 
 EXPRTEST(func_max,   "max  (2.0, 3.0)", std::fmax(2.0,3.0))
 EXPRTEST(func_min,   "min  (2.0, 3.0)", std::fmin(2.0,3.0))

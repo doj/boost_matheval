@@ -177,4 +177,16 @@ public:
   tanInvalid() : exception("invalid tan") {}
 };
 
+class tgammaDivideByZero : public divideByZero
+{
+public:
+  tgammaDivideByZero() : divideByZero("tgamma divide by zero") {}
+};
+
+class tgammaInvalid : public exception
+{
+public:
+  explicit tgammaInvalid(double d) : exception("invalid tgamma "+std::to_string(d)) {}
+};
+
 } // namespace matheval

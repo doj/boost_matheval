@@ -77,7 +77,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
             ("sqrt"  , static_cast<double (*)(double)>(&math::sqrt))
             ("tan"   , static_cast<double (*)(double)>(&math::tan))
             ("tanh"  , static_cast<double (*)(double)>(&std::tanh))
-            ("tgamma", static_cast<double (*)(double)>(&std::tgamma))
+            ("tgamma", static_cast<double (*)(double)>(&math::tgamma))
         ;
 
     bfunc.add

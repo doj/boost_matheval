@@ -3,7 +3,6 @@
 #endif
 
 #pragma once
-
 #include <boost/math/constants/constants.hpp>
 #include <cmath>
 #include "matheval.hpp"
@@ -154,6 +153,24 @@ T tan(T x) {
     throw matheval::tanInvalid{};
   }
   return std::tan(x);
+}
+
+/// @brief gamma
+template <typename T>
+T tgamma(T x) {
+  if (x == 0) {
+    throw matheval::tgammaDivideByZero{};
+  } else if (x == -INFINITY) {
+    throw matheval::tgammaInvalid{x};
+  } else if (x < 0 && x == ceil(x)) {
+    throw matheval::tgammaInvalid{x};
+  }
+#if 0
+  int psigngam;
+  return lgamma_r(x, &psigngam);
+#else
+  return std::tgamma(x);
+#endif
 }
 
 /// @brief binary plus

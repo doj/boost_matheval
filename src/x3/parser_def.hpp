@@ -72,7 +72,7 @@ struct ufunc_ : x3::symbols<double (*)(double)> {
             ("sqrt"  , static_cast<double (*)(double)>(&math::sqrt))
             ("tan"   , static_cast<double (*)(double)>(&math::tan))
             ("tanh"  , static_cast<double (*)(double)>(&std::tanh))
-            ("tgamma", static_cast<double (*)(double)>(&std::tgamma))
+            ("tgamma", static_cast<double (*)(double)>(&math::tgamma))
             ;
         // clang-format on
     }
