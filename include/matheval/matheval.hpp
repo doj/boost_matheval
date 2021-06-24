@@ -117,4 +117,10 @@ public:
   explicit invalidAcos(double d) : exception("invalid acos "+std::to_string(d)) {}
 };
 
+class invalidAsin : public exception
+{
+public:
+  explicit invalidAsin(double d) : exception("invalid asin "+std::to_string(d)) {}
+};
+
 } // namespace matheval

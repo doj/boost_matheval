@@ -11,6 +11,9 @@ THROWTEST(acos1, "acos(1.1)", matheval::invalidAcos)
 THROWTEST(acos2, "acos(-1.1)", matheval::invalidAcos)
 
 EXPRTEST(func_asin  , "asin  ( 1.0)", std::asin  ( 1.0))
+THROWTEST(asin1, "asin(1.1)", matheval::invalidAsin)
+THROWTEST(asin2, "asin(-1.1)", matheval::invalidAsin)
+
 EXPRTEST(func_atan  , "atan  ( 1.0)", std::atan  ( 1.0))
 EXPRTEST(func_ceil  , "ceil  ( 0.5)", std::ceil  ( 0.5))
 EXPRTEST(func_cos   , "cos   ( 1.0)", std::cos   ( 1.0))

@@ -51,6 +51,15 @@ T acos(T x) {
   return std::acos(x);
 }
 
+/// @brief asinus
+template <typename T>
+T asin(T x) {
+  if (std::fabs(x) > 1) {
+    throw matheval::invalidAsin{x};
+  }
+  return std::asin(x);
+}
+
 /// @brief unary plus
 template <typename T>
 T plus(T x) {
