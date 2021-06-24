@@ -72,7 +72,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
 
     bfunc.add
         ("atan2", static_cast<double (*)(double, double)>(&std::atan2))
-        ("pow"  , static_cast<double (*)(double, double)>(&std::pow))
+        ("pow"  , static_cast<double (*)(double, double)>(&math::pow))
         ;
 
     unary_op.add
@@ -110,7 +110,7 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
         ;
 
     power.add
-        ("**", static_cast<double (*)(double, double)>(&std::pow))
+        ("**", static_cast<double (*)(double, double)>(&math::pow))
         ;
 
     expression =

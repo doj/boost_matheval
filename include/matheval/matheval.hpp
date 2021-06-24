@@ -72,6 +72,7 @@ class divideByZero : public exception
 {
 public:
   divideByZero() : exception("divide by zero") {}
+  explicit divideByZero(const char *what) : exception(what) {}
 };
 
 class moduloByZero : public exception
@@ -84,6 +85,30 @@ class moduloWithInfinity : public exception
 {
 public:
   moduloWithInfinity() : exception("modulo with infinity") {}
+};
+
+class powInvalid : public exception
+{
+public:
+  powInvalid() : exception("pow invalid parameter") {}
+};
+
+class powDivideByZero : public divideByZero
+{
+public:
+  powDivideByZero() : divideByZero("pow divide by zero") {}
+};
+
+class powOverflow : public exception
+{
+public:
+  powOverflow() : exception("pow overflow") {}
+};
+
+class powUnderflow : public exception
+{
+public:
+  powUnderflow() : exception("pow underflow") {}
 };
 
 } // namespace matheval

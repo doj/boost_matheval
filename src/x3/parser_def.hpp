@@ -85,7 +85,7 @@ struct bfunc_ : x3::symbols<double (*)(double, double)> {
             ("atan2", static_cast<double (*)(double, double)>(&std::atan2))
             ("max"  , static_cast<double (*)(double, double)>(&std::fmax))
             ("min"  , static_cast<double (*)(double, double)>(&std::fmin))
-            ("pow"  , static_cast<double (*)(double, double)>(&std::pow))
+            ("pow"  , static_cast<double (*)(double, double)>(&math::pow))
             ;
         // clang-format on
     }
@@ -165,7 +165,7 @@ struct power_ : x3::symbols<double (*)(double, double)> {
     power_() {
         // clang-format off
         add
-            ("**", static_cast<double (*)(double, double)>(&std::pow))
+            ("**", static_cast<double (*)(double, double)>(&math::pow))
             ;
         // clang-format on
     }

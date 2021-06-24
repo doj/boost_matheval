@@ -5,7 +5,7 @@
 EXPRTEST(pemdas1, "2*3+4*5",   2*3+4*5)
 EXPRTEST(pemdas2, "2*(3+4)*5", 2*(3+4)*5)
 EXPRTEST(pemdas3, "2**3+4",    std::pow(2,3)+4)
-EXPRTEST(pemdas4, "2**2**-3",  std::pow(2.,std::pow(2.,-3.)))
+EXPRTEST(pemdas4, "2**2**3",  std::pow(2.,std::pow(2.,3.)))
 
 EXPRTEST(rel1 , "1 == 1",   1 == 1)
 EXPRTEST(rel2 , "0 == 1",   0 == 1)

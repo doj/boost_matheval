@@ -93,6 +93,39 @@ T fmod(T x, T y) {
   return std::fmod(x,y);
 }
 
+/// @brief power
+template <typename T>
+T pow(T x, T y) {
+#if defined(__linux__)
+  errno = 0;
+  feclearexcept(FE_ALL_EXCEPT);
+  T res = std::pow(x,y);
+  if (fetestexcept(FE_INVALID)) {
+    throw matheval::powInvalid{};
+  } else if (fetestexcept(FE_DIVBYZERO)) {
+    throw matheval::powDivideByZero{};
+  } else if (fetestexcept(FE_OVERFLOW)) {
+    throw matheval::powOverflow{};
+  } else if (fetestexcept(FE_UNDERFLOW)) {
+    throw matheval::powUnderflow{};
+  }
+  return res;
+#elif defined(__APPLE__) && defined(__clang__)
+  if (y < 0) {
+    throw matheval::powDivideByZero{};
+  } else if (x < 0 &&
+	     isfinite(y) &&
+	     y != floor(y)) {
+    throw matheval::powInvalid{};
+  } else if (x == 0 && y <= 0) {
+    throw matheval::powInvalid{};
+  }
+  return std::pow(x,y);
+#else
+#error unknown platform
+#endif
+}
+
 /// @brief unary not
 template <typename T>
 T unary_not(T x) {
