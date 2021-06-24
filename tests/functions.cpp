@@ -37,8 +37,17 @@ EXPRTEST(func_exp   , "exp   ( 1.0)", std::exp   ( 1.0))
 EXPRTEST(func_floor , "floor ( 0.5)", std::floor ( 0.5))
 EXPRTEST(func_isnan , "isnan ( nan)",                1 )
 EXPRTEST(func_isinf , "isinf ( inf)",                1 )
+
 EXPRTEST(func_log   , "log   ( 1.0)", std::log   ( 1.0))
+EXPRTEST(func_log2  , "log2  ( 1.0)", std::log2  ( 1.0))
 EXPRTEST(func_log10 , "log10 ( 1.0)", std::log10 ( 1.0))
+THROWTEST(log1, "log(-.1)", matheval::logInvalid);
+THROWTEST(log7, "log2(-1)", matheval::logInvalid);
+THROWTEST(log3, "log10(-3.14)", matheval::logInvalid);
+THROWTEST(log4, "log(0)", matheval::logDivideByZero);
+THROWTEST(log5, "log(-0)", matheval::logDivideByZero);
+THROWTEST(log6, "log(+0.0)", matheval::logDivideByZero);
+
 EXPRTEST(func_rad   , "rad   ( 180)",      pi<double>())
 EXPRTEST(func_sgn   , "sgn   (-1.0)",             -1.0 )
 EXPRTEST(func_sin   , "sin   ( 1.0)", std::sin   ( 1.0))
@@ -63,16 +72,13 @@ THROWTEST(pow3, "pow(0, -3.14)", matheval::exception)
 THROWTEST(pow4, "pow(-3, 3.14)", matheval::exception)
 THROWTEST(pow5, "pow(0, 0)", matheval::exception)
 
-#if __cplusplus >= 201402L
 EXPRTEST(func_asinh , "asinh ( 1.0)", std::asinh ( 1.0))
 EXPRTEST(func_cbrt  , "cbrt  ( 1.0)", std::cbrt  ( 1.0))
 EXPRTEST(func_erf   , "erf   ( 1.0)", std::erf   ( 1.0))
 EXPRTEST(func_erfc  , "erfc  ( 1.0)", std::erfc  ( 1.0))
 EXPRTEST(func_exp2  , "exp2  ( 1.0)", std::exp2  ( 1.0))
-EXPRTEST(func_log2  , "log2  ( 1.0)", std::log2  ( 1.0))
 EXPRTEST(func_round , "round ( 0.5)", std::round ( 0.5))
 EXPRTEST(func_tgamma, "tgamma( 4.0)", std::tgamma( 4.0))
 
 EXPRTEST(func_max,   "max  (2.0, 3.0)", std::fmax(2.0,3.0))
 EXPRTEST(func_min,   "min  (2.0, 3.0)", std::fmin(2.0,3.0))
-#endif

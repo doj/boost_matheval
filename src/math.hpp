@@ -96,6 +96,39 @@ T plus(T x) {
     return x;
 }
 
+/// @brief natural logarithm
+template <typename T>
+T log(T x) {
+  if (x == 0.0) {
+    throw matheval::logDivideByZero{};
+  } else if (x < 0.0) {
+    throw matheval::logInvalid{x};
+  }
+  return std::log(x);
+}
+
+/// @brief log2
+template <typename T>
+T log2(T x) {
+  if (x == 0.0) {
+    throw matheval::logDivideByZero{};
+  } else if (x < 0.0) {
+    throw matheval::logInvalid{x};
+  }
+  return std::log2(x);
+}
+
+/// @brief log10
+template <typename T>
+T log10(T x) {
+  if (x == 0.0) {
+    throw matheval::logDivideByZero{};
+  } else if (x < 0.0) {
+    throw matheval::logInvalid{x};
+  }
+  return std::log10(x);
+}
+
 /// @brief binary plus
 template <typename T>
 T plus(T x, T y) {

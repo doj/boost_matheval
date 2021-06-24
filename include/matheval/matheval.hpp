@@ -147,4 +147,16 @@ public:
   explicit cosInvalid() : exception("invalid cos") {}
 };
 
+class logInvalid : public exception
+{
+public:
+  explicit logInvalid(double d) : exception("invalid logarithm "+std::to_string(d)) {}
+};
+
+class logDivideByZero : public divideByZero
+{
+public:
+  logDivideByZero() : divideByZero("logarithm divide by zero") {}
+};
+
 } // namespace matheval
