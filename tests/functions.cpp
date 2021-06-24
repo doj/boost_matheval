@@ -10,6 +10,9 @@ EXPRTEST(func_acos  , "acos  ( 1.0)", std::acos  ( 1.0))
 THROWTEST(acos1, "acos(1.1)", matheval::invalidAcos)
 THROWTEST(acos2, "acos(-1.1)", matheval::invalidAcos)
 
+EXPRTEST(func_acosh, "acosh(3.0)", std::acosh(3.0))
+THROWTEST(acosh1, "acosh(-0.9)", matheval::invalidAcosh)
+
 EXPRTEST(func_asin  , "asin  ( 1.0)", std::asin  ( 1.0))
 THROWTEST(asin1, "asin(1.1)", matheval::invalidAsin)
 THROWTEST(asin2, "asin(-1.1)", matheval::invalidAsin)
@@ -50,7 +53,6 @@ THROWTEST(pow4, "pow(-3, 3.14)", matheval::exception)
 THROWTEST(pow5, "pow(0, 0)", matheval::exception)
 
 #if __cplusplus >= 201402L
-EXPRTEST(func_acosh , "acosh ( 1.0)", std::acosh ( 1.0))
 EXPRTEST(func_asinh , "asinh ( 1.0)", std::asinh ( 1.0))
 EXPRTEST(func_atanh , "atanh ( 0.0)", std::atanh ( 0.0))
 EXPRTEST(func_cbrt  , "cbrt  ( 1.0)", std::cbrt  ( 1.0))

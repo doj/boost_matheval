@@ -49,7 +49,9 @@ grammar<Iterator>::grammar() : grammar::base_type(expression) {
     ufunc.add
         ("abs"  , static_cast<double (*)(double)>(&std::abs))
         ("acos" , static_cast<double (*)(double)>(&math::acos))
+        ("acosh", static_cast<double (*)(double)>(&math::acosh))
         ("asin" , static_cast<double (*)(double)>(&math::asin))
+        ("asinh", static_cast<double (*)(double)>(&std::asinh))
         ("atan" , static_cast<double (*)(double)>(&std::atan))
         ("ceil" , static_cast<double (*)(double)>(&std::ceil))
         ("cos"  , static_cast<double (*)(double)>(&std::cos))

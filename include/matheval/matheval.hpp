@@ -117,6 +117,12 @@ public:
   explicit invalidAcos(double d) : exception("invalid acos "+std::to_string(d)) {}
 };
 
+class invalidAcosh : public exception
+{
+public:
+  explicit invalidAcosh(double d) : exception("invalid acosh "+std::to_string(d)) {}
+};
+
 class invalidAsin : public exception
 {
 public:

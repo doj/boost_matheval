@@ -44,7 +44,7 @@ struct ufunc_ : x3::symbols<double (*)(double)> {
         add
             ("abs"   , static_cast<double (*)(double)>(&std::abs))
             ("acos"  , static_cast<double (*)(double)>(&math::acos))
-            ("acosh" , static_cast<double (*)(double)>(&std::acosh))
+            ("acosh" , static_cast<double (*)(double)>(&math::acosh))
             ("asin"  , static_cast<double (*)(double)>(&math::asin))
             ("asinh" , static_cast<double (*)(double)>(&std::asinh))
             ("atan"  , static_cast<double (*)(double)>(&std::atan))
