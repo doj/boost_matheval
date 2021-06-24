@@ -56,7 +56,10 @@ THROWTEST(sin1, "sin(inf)", matheval::sinInvalid)
 THROWTEST(sin2, "sin(-inf)", matheval::sinInvalid)
 
 EXPRTEST(func_sinh  , "sinh  ( 1.0)", std::sinh  ( 1.0))
+
 EXPRTEST(func_sqrt  , "sqrt  ( 1.0)", std::sqrt  ( 1.0))
+THROWTEST(sqrt1, "sqrt(-3.14)", matheval::sqrtInvalid)
+
 EXPRTEST(func_tan   , "tan   ( 1.0)", std::tan   ( 1.0))
 EXPRTEST(func_tanh  , "tanh  ( 1.0)", std::tanh  ( 1.0))
 

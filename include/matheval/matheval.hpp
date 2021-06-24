@@ -165,4 +165,10 @@ public:
   sinInvalid() : exception("invalid sin") {}
 };
 
+class sqrtInvalid : public exception
+{
+public:
+  explicit sqrtInvalid(double d) : exception("invalid sqrt "+std::to_string(d)) {}
+};
+
 } // namespace matheval

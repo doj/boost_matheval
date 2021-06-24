@@ -138,6 +138,15 @@ T sin(T x) {
   return std::sin(x);
 }
 
+/// @brief square root
+template <typename T>
+T sqrt(T x) {
+  if (x < 0.0) {
+    throw matheval::sqrtInvalid{x};
+  }
+  return std::sqrt(x);
+}
+
 /// @brief binary plus
 template <typename T>
 T plus(T x, T y) {
