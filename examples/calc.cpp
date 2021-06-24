@@ -47,7 +47,9 @@ void sigint_handler(int /*unused*/)
 {
     std::cout << "\n";
     rl_on_new_line();
+#if !defined(__APPLE__)
     rl_replace_line("", 0);
+#endif
     rl_redisplay();
 }
 
