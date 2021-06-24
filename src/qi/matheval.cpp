@@ -2,7 +2,7 @@
 
 #include "matheval.hpp"
 #include "ast.hpp"
-#include "evaluator.hpp"
+#include "../evaluator.hpp"
 #include "parser.hpp"
 
 #include <memory>

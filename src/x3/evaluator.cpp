@@ -1,6 +1,6 @@
 #define MATHEVAL_IMPLEMENTATION
 
-#include "evaluator.hpp"
+#include "../evaluator.hpp"
 #include "ast.hpp"
 
 namespace matheval {

@@ -2,7 +2,7 @@ add_library(matheval.qi
   ast_adapted.hpp
   ast.hpp
   evaluator.cpp
-  evaluator.hpp
+  ../evaluator.hpp
   matheval.cpp
   ../math.hpp
   parser.cpp
@@ -11,6 +11,7 @@ add_library(matheval.qi
   )
 target_include_directories(matheval.qi
   PUBLIC ../../include/matheval
+  PRIVATE .
   )
 target_compile_features(matheval.qi
   PUBLIC cxx_std_11
