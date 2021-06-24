@@ -1,3 +1,5 @@
+this repository was forked from https://github.com/hmenke/boost_matheval
+
 # Boost Matheval
 
 [![Build status][travis-svg]][travis-link]
