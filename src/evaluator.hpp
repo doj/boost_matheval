@@ -6,7 +6,7 @@
 
 #include "ast.hpp"
 
-#include <map>
+#include <functional>
 #include <string>
 
 namespace matheval {
@@ -33,14 +33,15 @@ struct ConstantFolder {
 
 struct eval {
     using result_type = double;
+    using variable_callback_fn = std::function<double(std::string const&)>;
 
-    explicit eval(std::map<std::string, double> sym) : st(std::move(sym)) {}
+    explicit eval(variable_callback_fn f) : fn(f) {}
 
     double operator()(nil) const;
 
     double operator()(double n) const;
 
-    double operator()(std::string const &c) const;
+    double operator()(std::string const &var) const;
 
     double operator()(operation const &x, double lhs) const;
 
@@ -51,7 +52,7 @@ struct eval {
     double operator()(expression const &x) const;
 
 private:
-    std::map<std::string, double> st;
+    variable_callback_fn fn;
 };
 
 } // namespace ast

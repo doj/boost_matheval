@@ -24,7 +24,7 @@
 boost::optional<double> evaluate(std::string const &expr)
 {
     try {
-        auto res = matheval::parse(expr, {});
+        auto res = matheval::parse(expr);
         std::cout << res << '\n';
         return res;
     } catch (std::exception const &e) {

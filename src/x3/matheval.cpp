@@ -34,8 +34,8 @@ public:
 
     void optimize() { ast = boost::apply_visitor(ast::ConstantFolder{}, ast); }
 
-    double evaluate(std::map<std::string, double> const &st) {
-        return boost::apply_visitor(ast::eval{st}, ast);
+    double evaluate(Parser::variable_callback_fn fn) {
+        return boost::apply_visitor(ast::eval{fn}, ast);
     }
 };
 
@@ -47,8 +47,8 @@ void Parser::parse(std::string const &expr) { pimpl->parse(expr); }
 
 void Parser::optimize() { pimpl->optimize(); }
 
-double Parser::evaluate(std::map<std::string, double> const &st) {
-    return pimpl->evaluate(st);
+double Parser::evaluate(Parser::variable_callback_fn fn) {
+    return pimpl->evaluate(fn);
 }
 
 } // namespace matheval

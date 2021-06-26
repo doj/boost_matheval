@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <map>
 #include <memory>
 #include <string>
@@ -27,6 +28,8 @@ class Parser {
     std::unique_ptr<impl> pimpl;
 
 public:
+    using variable_callback_fn = std::function<double(std::string const&)>;
+
     /// @brief Constructor
     Parser();
 
@@ -43,8 +46,26 @@ public:
 
     /// @brief Evaluate the abstract syntax tree for a given symbol table
     ///
-    /// @param[in] st The symbol table
-    double evaluate(std::map<std::string, double> const &st = {});
+    /// @param[in] fn    the callback function for variable lookup, can be NULL.
+    /// @throw various exceptions derived from matheval::exception
+    /// @throw exceptions derived from std::exception
+    double evaluate(variable_callback_fn fn = nullptr);
+
+  /// @brief Evaluate the abstract syntax tree for a given symbol table
+  ///
+  /// @param[in] st    the symbol table for variable lookup.
+  /// @throw various exceptions derived from matheval::exception
+  /// @throw exceptions derived from std::exception
+  double evaluate(std::map<std::string,double> const &st)
+  {
+    return evaluate([&st](std::string const &var){
+	auto it = st.find(var);
+	if (it == st.end()) {
+	  throw std::invalid_argument("Unknown variable " + var); // NOLINT
+	}
+	return it->second;
+      });
+  }
 };
 
 /// @brief Convenience function
@@ -53,9 +74,28 @@ public:
 /// evaluates it, and returns the result.
 ///
 /// @param[in] expr  mathematical expression
-/// @param[in] st    the symbol table for variables
+/// @param[in] fn    the callback function for variable lookup, can be NULL.
+/// @throw various exceptions derived from matheval::exception
+/// @throw exceptions derived from std::exception
 inline double parse(std::string const &expr,
-                    std::map<std::string, double> const &st = {}) {
+		    Parser::variable_callback_fn fn = nullptr) {
+    Parser parser;
+    parser.parse(expr);
+    return parser.evaluate(fn);
+}
+
+/// @brief Convenience function
+///
+/// This function builds the grammar, parses the iterator to an AST,
+/// evaluates it, and returns the result.
+///
+/// @param[in] expr  mathematical expression
+/// @param[in] st    symbol table for variable lookups.
+/// @throw various exceptions derived from matheval::exception
+/// @throw exceptions derived from std::exception
+inline double parse(std::string const &expr,
+		    std::map<std::string,double> const &st)
+{
     Parser parser;
     parser.parse(expr);
     return parser.evaluate(st);

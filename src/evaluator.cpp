@@ -33,12 +33,11 @@ double eval::operator()(nil) const {
 
 double eval::operator()(double n) const { return n; }
 
-double eval::operator()(std::string const &c) const {
-    auto it = st.find(c);
-    if (it == st.end()) {
-        throw std::invalid_argument("Unknown variable " + c); // NOLINT
-    }
-    return it->second;
+double eval::operator()(std::string const &var) const {
+  if (! fn) {
+    throw std::invalid_argument("Missing symbol table to look up variable " + var); // NOLINT
+  }
+  return fn(var);
 }
 
 double eval::operator()(operation const &x, double lhs) const {
