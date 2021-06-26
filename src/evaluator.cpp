@@ -37,7 +37,7 @@ double eval::operator()(double n) const { return n; }
 
 double eval::operator()(std::string const &var) const {
   if (! fn) {
-    throw std::invalid_argument("Missing symbol table to look up variable " + var); // NOLINT
+    throw std::invalid_argument("Missing callback function to look up variable " + var); // NOLINT
   }
   return fn(var);
 }
@@ -59,7 +59,6 @@ double eval::operator()(binary_op const &x) const {
 }
 
 double eval::operator()(ternary_op const &x) const {
-  std::cout << "d1\n";
     double p1 = boost::apply_visitor(*this, x.p1);
     double p2 = boost::apply_visitor(*this, x.p2);
     double p3 = boost::apply_visitor(*this, x.p3);
