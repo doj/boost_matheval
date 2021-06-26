@@ -73,6 +73,22 @@ operator()(binary_op const &x) const {
     return binary_op(x.op, lhs, rhs);
 }
 
+ConstantFolder::result_type ConstantFolder::
+operator()(ternary_op const &x) const {
+    operand p1 = boost::apply_visitor(*this, x.p1);
+    operand p2 = boost::apply_visitor(*this, x.p2);
+    operand p3 = boost::apply_visitor(*this, x.p3);
+
+    /// If both operands are known, we can directly evaluate the function,
+    /// else we just update the children with the new expressions.
+    if (holds_alternative<double>(p1) &&
+	holds_alternative<double>(p2) &&
+	holds_alternative<double>(p3)) {
+        return x.op(boost::get<double>(p1), boost::get<double>(p2), boost::get<double>(p3));
+    }
+    return ternary_op(x.op, p1, p2, p3);
+}
+
 } // namespace ast
 
 } // namespace matheval

@@ -97,3 +97,8 @@ THROWTEST(tgamma3, "tgamma(-2)", matheval::tgammaInvalid)
 
 EXPRTEST(func_max,   "max  (2.0, 3.0)", std::fmax(2.0,3.0))
 EXPRTEST(func_min,   "min  (2.0, 3.0)", std::fmin(2.0,3.0))
+
+EXPRTEST(if1, "ifelse(1,2,3)", 2)
+EXPRTEST(if2, "ifelse(0,1,2)", 2)
+EXPRTEST(if3, "ifelse(-0.0,1,2)", 2)
+EXPRTEST(if4, "ifelse(+3-1.1-1.9,1,2)", 2)

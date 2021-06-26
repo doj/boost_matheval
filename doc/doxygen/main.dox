@@ -94,6 +94,11 @@ there exist some:
 - `min`
 - `pow`
 
+@section other_func Other functions
+
+- `ifelse(expr, result_true, result_false)`
+  This function checks if `expr` is true and returns `result_true` , otherwise returns `result_false`
+
 @section constants Known constants
 
 Currently only very few constants are defined.

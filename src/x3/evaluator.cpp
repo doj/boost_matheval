@@ -65,6 +65,23 @@ operator()(binary_op const &x) const {
     return result_type{binary_op{x.op, lhs, rhs}};
 }
 
+ConstantFolder::result_type ConstantFolder::
+operator()(ternary_op const &x) const {
+    auto p1 = boost::apply_visitor(*this, x.p1);
+    auto p2 = boost::apply_visitor(*this, x.p2);
+    auto p3 = boost::apply_visitor(*this, x.p3);
+
+    /// If all operands are known, we can directly evaluate the function,
+    /// else we just update the children with the new expressions.
+    if (holds_alternative<double>(p1) &&
+	holds_alternative<double>(p2) &&
+	holds_alternative<double>(p3)) {
+        return result_type{
+            x.op(boost::get<double>(p1), boost::get<double>(p2), boost::get<double>(p3))};
+    }
+    return result_type{ternary_op{x.op, p1, p2, p3}};
+}
+
 } // namespace ast
 
 } // namespace matheval

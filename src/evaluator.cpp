@@ -3,6 +3,8 @@
 #include "../evaluator.hpp"
 #include "ast.hpp"
 
+#include <iostream>
+
 namespace matheval {
 
 namespace ast {
@@ -54,6 +56,14 @@ double eval::operator()(binary_op const &x) const {
     double lhs = boost::apply_visitor(*this, x.lhs);
     double rhs = boost::apply_visitor(*this, x.rhs);
     return x.op(lhs, rhs);
+}
+
+double eval::operator()(ternary_op const &x) const {
+  std::cout << "d1\n";
+    double p1 = boost::apply_visitor(*this, x.p1);
+    double p2 = boost::apply_visitor(*this, x.p2);
+    double p3 = boost::apply_visitor(*this, x.p3);
+    return x.op(p1, p2, p3);
 }
 
 double eval::operator()(expression const &x) const {

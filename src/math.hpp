@@ -173,6 +173,12 @@ T tgamma(T x) {
 #endif
 }
 
+/// @brief if/else function
+template <typename T>
+T ifelse(T expr, T res_true, T res_false) {
+  return expr ? res_true : res_false;
+}
+
 /// @brief binary plus
 template <typename T>
 T plus(T x, T y) {
