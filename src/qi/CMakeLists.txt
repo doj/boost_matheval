@@ -2,6 +2,7 @@ add_library(matheval.qi
   ast_adapted.hpp
   ast.hpp
   evaluator.cpp
+  ../evaluator.cpp
   ../evaluator.hpp
   matheval.cpp
   ../math.hpp

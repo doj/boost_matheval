@@ -34,12 +34,6 @@ bool holds_alternative(operand const &v) {
     return boost::apply_visitor(holds_alternative_impl<T>(), v);
 }
 
-ConstantFolder::result_type ConstantFolder::operator()(nil) const { return 0; }
-
-ConstantFolder::result_type ConstantFolder::operator()(double n) const {
-    return n;
-}
-
 ConstantFolder::result_type ConstantFolder::
 operator()(std::string const &c) const {
     return c;
@@ -77,58 +71,6 @@ operator()(binary_op const &x) const {
         return x.op(boost::get<double>(lhs), boost::get<double>(rhs));
     }
     return binary_op(x.op, lhs, rhs);
-}
-
-ConstantFolder::result_type ConstantFolder::
-operator()(expression const &x) const {
-    operand state = boost::apply_visitor(*this, x.lhs);
-    for (std::list<operation>::const_iterator it = x.rhs.begin();
-         it != x.rhs.end(); ++it) {
-        state = (*this)(*it, state);
-    }
-    return state;
-}
-
-// Evaluator
-
-double eval::operator()(nil) const {
-    BOOST_ASSERT(0);
-    return 0;
-}
-
-double eval::operator()(double n) const { return n; }
-
-double eval::operator()(std::string const &c) const {
-    std::map<std::string, double>::const_iterator it = st.find(c);
-    if (it == st.end()) {
-        throw std::invalid_argument("Unknown variable " + c); // NOLINT
-    }
-    return it->second;
-}
-
-double eval::operator()(operation const &x, double lhs) const {
-    double rhs = boost::apply_visitor(*this, x.rhs);
-    return x.op(lhs, rhs);
-}
-
-double eval::operator()(unary_op const &x) const {
-    double rhs = boost::apply_visitor(*this, x.rhs);
-    return x.op(rhs);
-}
-
-double eval::operator()(binary_op const &x) const {
-    double lhs = boost::apply_visitor(*this, x.lhs);
-    double rhs = boost::apply_visitor(*this, x.rhs);
-    return x.op(lhs, rhs);
-}
-
-double eval::operator()(expression const &x) const {
-    double state = boost::apply_visitor(*this, x.lhs);
-    for (std::list<operation>::const_iterator it = x.rhs.begin();
-         it != x.rhs.end(); ++it) {
-        state = (*this)(*it, state);
-    }
-    return state;
 }
 
 } // namespace ast
