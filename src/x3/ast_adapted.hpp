@@ -12,7 +12,7 @@ BOOST_FUSION_ADAPT_STRUCT(matheval::ast::unary_op, op, rhs)
 
 BOOST_FUSION_ADAPT_STRUCT(matheval::ast::binary_op, op, lhs, rhs)
 
-BOOST_FUSION_ADAPT_STRUCT(matheval::ast::ternary_op, op, p1, p2, p2)
+BOOST_FUSION_ADAPT_STRUCT(matheval::ast::ternary_op, op, p1, p2, p3)
 
 BOOST_FUSION_ADAPT_STRUCT(matheval::ast::operation, op, rhs)
 
