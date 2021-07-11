@@ -1,5 +1,4 @@
 #define BOOST_TEST_MODULE variables
-#include <boost/test/included/unit_test.hpp>
 #include "exprtest.hpp"
 
 double const x = 1;

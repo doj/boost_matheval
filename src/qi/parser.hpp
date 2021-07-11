@@ -9,7 +9,7 @@
 #define BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
 #include <boost/spirit/include/qi.hpp>
 
-#include <iostream>
+#include <sstream>
 
 namespace matheval {
 
@@ -27,11 +27,9 @@ struct expectation_handler {
     template <typename Iterator>
     void operator()(Iterator first, Iterator last,
                     boost::spirit::info const &info) const {
-        std::stringstream msg;
-        msg << "Expected " << info << " at \"" << std::string(first, last)
-            << "\"";
-
-        throw std::runtime_error(msg.str()); // NOLINT
+        std::ostringstream msg;
+        msg << "Expected " << info << " at \"" << std::string(first, last) << '"';
+        throw matheval::parse_error(msg.str()); // NOLINT
     }
 };
 

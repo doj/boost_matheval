@@ -7,6 +7,22 @@
 
 namespace matheval {
 
+/**
+ * base class of all exceptions thrown by the matheval library.
+ */
+class exception : public std::runtime_error
+{
+public:
+  explicit exception(const std::string& what_arg) : std::runtime_error(what_arg) {}
+  explicit exception(const char* what_arg) : std::runtime_error(what_arg) {}
+};
+
+class invalid_argument : public exception
+{
+public:
+  explicit invalid_argument(const std::string& what_arg) : exception(what_arg) {}
+};
+
 /// @brief Parse a mathematical expression
 ///
 /// This can parse and evaluate a mathematical expression for a given
@@ -61,7 +77,7 @@ public:
     return evaluate([&st](std::string const &var){
 	auto it = st.find(var);
 	if (it == st.end()) {
-	  throw std::invalid_argument("Unknown variable " + var); // NOLINT
+	  throw matheval::invalid_argument("Unknown variable " + var); // NOLINT
 	}
 	return it->second;
       });
@@ -101,11 +117,10 @@ inline double parse(std::string const &expr,
     return parser.evaluate(st);
 }
 
-class exception : public std::runtime_error
+class parse_error : public exception
 {
 public:
-  explicit exception(const std::string& what_arg) : std::runtime_error(what_arg) {}
-  explicit exception(const char* what_arg) : std::runtime_error(what_arg) {}
+  explicit parse_error(const std::string& what_arg) : exception(what_arg) {}
 };
 
 class divideByZero : public exception

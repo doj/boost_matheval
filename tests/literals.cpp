@@ -1,5 +1,4 @@
 #define BOOST_TEST_MODULE literals
-#include <boost/test/included/unit_test.hpp>
 #include "exprtest.hpp"
 
 using namespace boost::math::constants;

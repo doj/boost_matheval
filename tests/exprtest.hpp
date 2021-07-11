@@ -1,5 +1,11 @@
 #pragma once
+
+#ifndef BOOST_TEST_MODULE
+#error BOOST_TEST_MODULE is not defined when exprtest.hpp is included!
+#endif
+
 #include "matheval.hpp"
+#include <boost/test/included/unit_test.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <string>
 

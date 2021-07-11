@@ -2,6 +2,7 @@
 
 #include "../evaluator.hpp"
 #include "ast.hpp"
+#include "matheval.hpp"
 
 #include <iostream>
 
@@ -29,6 +30,7 @@ operator()(expression const &x) const {
 // Evaluator
 
 double eval::operator()(nil) const {
+    throw matheval::invalid_argument("operator nil called");
     BOOST_ASSERT(0);
     return 0;
 }
@@ -37,7 +39,7 @@ double eval::operator()(double n) const { return n; }
 
 double eval::operator()(std::string const &var) const {
   if (! fn) {
-    throw std::invalid_argument("Missing callback function to look up variable " + var); // NOLINT
+    throw matheval::invalid_argument("Missing callback function to look up variable " + var); // NOLINT
   }
   return fn(var);
 }

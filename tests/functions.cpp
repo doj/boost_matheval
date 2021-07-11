@@ -1,5 +1,4 @@
 #define BOOST_TEST_MODULE functions
-#include <boost/test/included/unit_test.hpp>
 #include "exprtest.hpp"
 
 using boost::math::constants::pi;
@@ -102,3 +101,4 @@ EXPRTEST(if1, "ifelse(1,2,3)", 2)
 EXPRTEST(if2, "ifelse(0,1,2)", 2)
 EXPRTEST(if3, "ifelse(-0.0,1,2)", 2)
 EXPRTEST(if4, "ifelse(+3-1.1-1.9,1,2)", 2)
+THROWTEST(if5, "ifelse(1,2)", matheval::parse_error) // missing a parameter

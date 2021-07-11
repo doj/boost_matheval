@@ -1,6 +1,5 @@
 #define BOOST_TEST_MODULE interface
-#include <boost/test/included/unit_test.hpp>
-
+#include "exprtest.hpp"
 #include <cmath>
 #include <limits>
 #include <map>
@@ -28,27 +27,6 @@ BOOST_AUTO_TEST_CASE(integration1) {
         1. / 3.);
     BOOST_CHECK_CLOSE_FRACTION(result, expected,
                                std::numeric_limits<double>::epsilon());
-}
-
-BOOST_AUTO_TEST_CASE(integration2) {
-    std::string expr = "(";
-
-    matheval::Parser parser;
-
-    // Parsing should fail
-    BOOST_CHECK_THROW(parser.parse(expr), std::runtime_error);
-}
-
-BOOST_AUTO_TEST_CASE(integration3) {
-    std::string expr = "x";
-
-    matheval::Parser parser;
-
-    BOOST_CHECK_NO_THROW(parser.parse(expr));
-
-    // Evaluating should fail
-    BOOST_CHECK_THROW(parser.evaluate(),
-                      std::invalid_argument);
 }
 
 BOOST_AUTO_TEST_CASE(integration4) {

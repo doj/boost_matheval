@@ -1,5 +1,4 @@
 #define BOOST_TEST_MODULE unary
-#include <boost/test/included/unit_test.hpp>
 #include "exprtest.hpp"
 
 EXPRTEST(unary1, "-(2)",  -2)

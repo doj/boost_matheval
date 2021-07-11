@@ -26,7 +26,7 @@ public:
 
         if (!r || first != last) {
             std::string rest(first, last);
-            throw std::runtime_error("Parsing failed at " + rest); // NOLINT
+            throw matheval::parse_error("Parsing failed at " + rest); // NOLINT
         }
 
         ast = ast_;

@@ -1,8 +1,6 @@
 #define BOOST_TEST_MODULE optimizer
-#include <boost/test/included/unit_test.hpp>
-
 #define MATHEVAL_IMPLEMENTATION
-
+#include "exprtest.hpp"
 #include "ast.hpp"
 #include "evaluator.hpp"
 #include "parser.hpp"

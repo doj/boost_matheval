@@ -1,8 +1,6 @@
-#define BOOST_TEST_MODULE empty node
-#include <boost/test/included/unit_test.hpp>
-
+#define BOOST_TEST_MODULE empty_node
 #define MATHEVAL_IMPLEMENTATION
-
+#include "exprtest.hpp"
 #include "ast.hpp"
 #include "evaluator.hpp"
 
