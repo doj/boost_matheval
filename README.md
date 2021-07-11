@@ -105,6 +105,7 @@ Changes from the upstream version:
   uses an invalid parameter. All exceptions thrown by the matheval
   library are derived from matheval::exception . See the matheval.hpp
   header file for details.
+* add ifelse() function
 
 ## Alternatives
 
