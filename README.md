@@ -91,7 +91,7 @@ General:
 
 * C++14 compatible compiler, i.e. GCC >= 4.8, Clang, Visual Studio 2015.
 * Boost.Spirit, Boost.Phoenix, and Boost.MathConstants.
-* No support for ternary functions (e.g. `if`).
+* No support for ternary operators (?:).
 * No support for complex numbers.
 
 ## doj fork
