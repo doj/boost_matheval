@@ -251,7 +251,7 @@ T pow(T x, T y) {
 	     isfinite(y) &&
 	     y != floor(y)) {
     throw matheval::powInvalid{};
-  } else if (x == 0 && y <= 0) {
+  } else if (x == 0 && y < 0) {
     throw matheval::powInvalid{};
   }
   return std::pow(x,y);
