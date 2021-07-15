@@ -6,6 +6,9 @@
 #include <boost/math/constants/constants.hpp>
 #include <cmath>
 #include "matheval.hpp"
+#if defined(__linux__)
+#include <fenv.h>
+#endif
 
 namespace matheval {
 
