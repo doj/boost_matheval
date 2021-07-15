@@ -68,18 +68,12 @@ EXPRTEST(func_tanh  , "tanh  ( 1.0)", std::tanh  ( 1.0))
 EXPRTEST(func_atan2, "atan2(2.0, 3.0)", std::atan2(2.0,3.0))
 
 EXPRTEST(func_pow,   "pow  (2.0, 3.0)", std::pow(2.0,3.0))
-#if __linux__
-THROWTEST(pow1, "pow(-2, 2)", matheval::powInvalid)
+EXPRTEST(pow0, "pow(-2, 2)", std::pow(-2,2))
+EXPRTEST(pow5, "pow(0, 0)", std::pow(0,0))
+THROWTEST(pow1, "pow(-2, 2.2)", matheval::powInvalid)
 THROWTEST(pow2, "pow(0, -3)", matheval::powDivideByZero)
 THROWTEST(pow3, "pow(0, -3.14)", matheval::divideByZero)
-#endif
-#if __apple__
-THROWTEST(pow1, "pow(-2, 2)", matheval::exception)
-THROWTEST(pow2, "pow(0, -3)", matheval::exception)
-THROWTEST(pow3, "pow(0, -3.14)", matheval::exception)
-#endif
 THROWTEST(pow4, "pow(-3, 3.14)", matheval::exception)
-THROWTEST(pow5, "pow(0, 0)", matheval::exception)
 
 EXPRTEST(func_asinh , "asinh ( 1.0)", std::asinh ( 1.0))
 EXPRTEST(func_cbrt  , "cbrt  ( 1.0)", std::cbrt  ( 1.0))
